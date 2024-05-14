@@ -19,7 +19,7 @@
     <script src="https://js.arcgis.com/4.29/"></script>
 
     <script>
-      require(["esri/WebMap", "esri/views/MapView", "esri/widgets/Legend"], function(WebMap, MapView, Legend) {
+      require(["esri/WebMap", "esri/views/MapView", "esri/widgets/Legend", "esri/core/reactiveUtils"], function(WebMap, MapView, Legend, reactiveUtils) {
         // https://belgium.maps.arcgis.com/home/item.html?id=78f760c61c454ba195aabab822cd7e85
         const webmap = new WebMap({
             portalItem: {
@@ -36,6 +36,11 @@
             view: view
         });
         view.ui.add(legend, "bottom-right")
+
+        reactiveUtils.when(
+            () => view.zoom,
+            () => console.log(view.zoom)
+        );
 
       });
     </script>
