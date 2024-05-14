@@ -19,15 +19,16 @@
     <script src="https://js.arcgis.com/4.29/"></script>
 
     <script>
-      require(["esri/Map", "esri/views/MapView"], function(Map, MapView) {
-        const map = new Map({
-          basemap: "osm" //https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#basemap
+      require(["esri/WebMap", "esri/views/MapView"], function(WebMap, MapView) {
+        // https://belgium.maps.arcgis.com/home/item.html?id=78f760c61c454ba195aabab822cd7e85
+        const webmap = new WebMap({
+            portalItem: {
+                id: "78f760c61c454ba195aabab822cd7e85"
+            }
         });
 
         const view = new MapView({
-          map: map,
-          center: [4.39946, 50.86397], // Longitude, latitude
-          zoom: 14,
+          map: webmap,
           container: "viewDiv"
         });
 
